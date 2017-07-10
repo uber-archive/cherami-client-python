@@ -1,0 +1,4 @@
+include README.rst
+recursive-include cherami_client/idl *
+recursive-include config *.yaml
+recursive-exclude * *.py[co]

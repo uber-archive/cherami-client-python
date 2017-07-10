@@ -1,0 +1,13 @@
+# For client instance
+application_identifier: example
+known_peers: 127.0.0.1:4922
+deployment_str: prod
+reconnect_delay: 1
+timeout_seconds: 10
+reconfigure_interval_seconds: 4
+
+# For publisher instance
+concurrency: 3
+reconnect_delay: 1
+destination: /test/dest1
+publisher: pub1

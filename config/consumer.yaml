@@ -1,0 +1,30 @@
+# For client instance
+application_identifier: example
+known_peers: 127.0.0.1:4922
+deployment_str: prod
+reconnect_delay: 1
+timeout_seconds: 10
+reconfigure_interval_seconds: 4
+
+# For consumer instance
+cherami_consumer_group:
+  consumer1:
+    deployment_str: prod
+    concurrency: 3
+    reconnect_delay: 1
+    prefetch_size: 50
+    destination: /test/dest1
+    consumer_group: /test/cg1
+    imports: example.example_handler
+    nack_failed_message: false
+
+  consumer2:
+    deployment_str: prod
+    concurrency: 3
+    reconnect_delay: 1
+    prefetch_size: 50
+    destination: /test/dest1
+    consumer_group: /test/cg2
+    imports: example.example_handler
+    nack_failed_message: false
+

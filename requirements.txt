@@ -1,0 +1,4 @@
+tchannel>=1.0.1
+zest.releaser==6.5
+crcmod
+clay-flask
