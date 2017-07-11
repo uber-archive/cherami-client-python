@@ -13,7 +13,7 @@ Installation
 Running Tests
 -------------
 
-``fab test``
+``make test``
 
 
 Usage
