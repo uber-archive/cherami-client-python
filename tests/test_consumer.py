@@ -20,8 +20,6 @@
 
 import unittest
 import mock
-import threading
-import time
 from clay import config
 
 from cherami_client.lib import cherami, cherami_output

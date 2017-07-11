@@ -46,7 +46,7 @@ def load_frontend(env=''):
     service_name = default_service_name
     if env:
         service_name += '_'
-        service_name +=  env
+        service_name += env
 
     frontend_modules[env] = thrift.load(
         path=os.path.join(

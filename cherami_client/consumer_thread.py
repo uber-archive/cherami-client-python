@@ -66,7 +66,7 @@ class ConsumerThread(Thread):
                     # if the queue is full, keep trying until there's free slot, or the thread has been shutdown
                     while not self.stop_signal.is_set():
                         try:
-                            self.msg_queue.put((util.create_delivery_token(msg.ackId, self.hostport),msg), block=True, timeout=5)
+                            self.msg_queue.put((util.create_delivery_token(msg.ackId, self.hostport), msg), block=True, timeout=5)
                             util.stats_count(self.tchannel.name, 'consumer_msg_queue.enqueue', self.hostport, 1)
                             break
                         except Full:

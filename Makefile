@@ -12,7 +12,7 @@ help:
 	@echo "install - install the package to the active Python's site-packages"
 
 bootstrap:
-  virtualenv --setuptools env
+	virtualenv --setuptools env
 	. env/bin/activate
 	pip install --upgrade setuptools
 	pip install --upgrade "pip>=7,<8"
