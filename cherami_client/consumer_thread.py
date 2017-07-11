@@ -21,7 +21,7 @@
 from __future__ import absolute_import
 
 import traceback
-from threading import Thread,Event
+from threading import Thread, Event
 from Queue import Full
 
 from cherami_client.lib import util
@@ -49,7 +49,7 @@ class ConsumerThread(Thread):
         request = cherami.ReceiveMessageBatchRequest(destinationPath=self.path,
                                                      consumerGroupName=self.consumer_group_name,
                                                      maxNumberOfMessages=self.msg_batch_size,
-                                                     receiveTimeout=max(1, self.timeout_seconds-1)
+                                                     receiveTimeout=max(1, self.timeout_seconds - 1)
                                                      )
         while not self.stop_signal.is_set():
             # possible optimization: if we don't have enough capacity in the queue, backoff for a bit before pulling from Cherami again

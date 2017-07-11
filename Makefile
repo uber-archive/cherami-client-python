@@ -8,13 +8,15 @@ help:
 	@echo "lint - check style with flake8"
 	@echo "test - run tests quickly with the default Python"
 	@echo "coverage - check code coverage quickly with the default Python"
-	@echo "docs - generate Sphinx HTML documentation, including API docs"
 	@echo "release - package and upload a release"
 	@echo "install - install the package to the active Python's site-packages"
 
 bootstrap:
+  virtualenv --setuptools env
+	. env/bin/activate
+	pip install --upgrade setuptools
+	pip install --upgrade "pip>=7,<8"
 	pip install -r requirements.txt
-	pip install -r requirements-docs.txt
 	pip install -r requirements-test.txt
 
 clean: clean-build clean-pyc clean-test
@@ -49,14 +51,6 @@ coverage: test
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
-
-docs:
-	rm -f docs/cherami_client.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ cherami_client
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	# open docs/_build/html/index.html
 
 release: clean
 	fullrelease

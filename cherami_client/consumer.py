@@ -53,7 +53,7 @@ class Consumer(object):
         self.headers = headers
         self.pre_fetch_count = pre_fetch_count
         self.msg_queue = Queue(pre_fetch_count)
-        self.msg_batch_size = max(pre_fetch_count/10, 1)
+        self.msg_batch_size = max(pre_fetch_count / 10, 1)
         self.timeout_seconds = timeout_seconds
         self.consumer_threads = {}
         self.ack_queue = Queue(ack_message_buffer_size)
@@ -162,9 +162,9 @@ class Consumer(object):
         duration_stats = 'cherami_client_python.{}.receive.duration'.format(self.tchannel.name)
 
         msgs = []
-        end_time = time.time()+self.timeout_seconds
+        end_time = time.time() + self.timeout_seconds
         while len(msgs) < num_msgs:
-            seconds_remaining = end_time-time.time()
+            seconds_remaining = end_time - time.time()
             if seconds_remaining <= 0:
                 stats.count(timeout_stats, 1)
                 stats.timing(duration_stats, util.time_diff_in_ms(start_time, time.time()))

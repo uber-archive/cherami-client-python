@@ -91,8 +91,7 @@ class Client(object):
             consumer_group_name,
             pre_fetch_count=50,
             ack_message_buffer_size=50,
-            ack_message_thread_count=4,
-            ):
+            ack_message_thread_count=4,):
         return consumer.Consumer(
             logger=self.logger,
             deployment_str=self.deployment_str,
