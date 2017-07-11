@@ -5,7 +5,7 @@ from pip.req import parse_requirements
 
 
 __version__ = '1.0.0'
-name = 'cherami_client'
+name = 'cherami-client'
 
 
 install_requires = []
@@ -28,6 +28,8 @@ def read_long_description(filename="README.rst"):
 setup(
     name=name,
     version=__version__,
+    author='Wei Han',
+    author_email='weihan@uber.com',
     url='https://github.com/uber/cherami-client-python',
     description='Cherami Python Client Library',
     packages=find_packages(exclude=['tests', 'demo', 'tests.*']),
