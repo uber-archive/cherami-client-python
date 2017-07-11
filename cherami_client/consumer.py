@@ -80,7 +80,8 @@ class Consumer(object):
                 consumerGroupName=self.consumer_group_name
             ))
 
-        host_connections = map(lambda h: util.get_connection_key(h), hosts.hostAddresses) if hosts.hostAddresses is not None else []
+        host_connections = map(lambda h: util.get_connection_key(h), hosts.hostAddresses) \
+            if hosts.hostAddresses is not None else []
         host_connection_set = set(host_connections)
         existing_connection_set = set(self.consumer_threads.keys())
         missing_connection_set = host_connection_set - existing_connection_set
@@ -185,9 +186,11 @@ class Consumer(object):
     def verify_checksum(self, consumer_message):
         if consumer_message.payload and consumer_message.payload.data:
             if consumer_message.payload.crc32IEEEDataChecksum:
-                return util.calc_crc(consumer_message.payload.data, cherami.ChecksumOption.CRC32IEEE) == consumer_message.payload.crc32IEEEDataChecksum
+                return util.calc_crc(consumer_message.payload.data, cherami.ChecksumOption.CRC32IEEE) \
+                                        == consumer_message.payload.crc32IEEEDataChecksum
             if consumer_message.payload.md5DataChecksum:
-                return util.calc_crc(consumer_message.payload.data, cherami.ChecksumOption.MD5) == consumer_message.payload.md5DataChecksum
+                return util.calc_crc(consumer_message.payload.data, cherami.ChecksumOption.MD5) \
+                                        == consumer_message.payload.md5DataChecksum
         return True
 
     # Ack can be used by application to Ack a message so it is not delivered to
@@ -243,7 +246,9 @@ class Consumer(object):
             return
 
         try:
-            self.ack_queue.put((is_ack, delivery_token, callback), block=True, timeout=self.timeout_seconds)
+            self.ack_queue.put((is_ack, delivery_token, callback),
+                               block=True,
+                               timeout=self.timeout_seconds)
 
             hostport = util.get_hostport_from_delivery_token(delivery_token)
             util.stats_count(self.tchannel.name, 'consumer_ack_queue.enqueue', hostport, 1)

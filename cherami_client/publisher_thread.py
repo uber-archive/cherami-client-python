@@ -27,7 +27,14 @@ from cherami_client.lib import cherami, cherami_input, util
 
 
 class PublisherThread(threading.Thread):
-    def __init__(self, path, task_queue, tchannel, hostport, headers, timeout_seconds, checksum_option):
+    def __init__(self,
+                 path,
+                 task_queue,
+                 tchannel,
+                 hostport,
+                 headers,
+                 timeout_seconds,
+                 checksum_option):
         threading.Thread.__init__(self)
         self.path = path
         self.task_queue = task_queue
@@ -81,5 +88,8 @@ class PublisherThread(threading.Thread):
 
             except Exception:
                 if msg and callable(callback):
-                    failure_msg = 'traceback:{0}, hostport:{1}, thread start time:{2}'.format(traceback.format_exc(), self.hostport, str(self.thread_start_time))
+                    failure_msg = 'traceback:{0}, hostport:{1}, thread start time:{2}'\
+                                    .format(traceback.format_exc(),
+                                            self.hostport,
+                                            str(self.thread_start_time))
                     callback(util.create_failed_message_ack(msg.id, failure_msg))

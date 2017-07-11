@@ -132,7 +132,8 @@ def stats_count(client_name, stats_name, hostport, count):
     stats.count(overall_stats, count)
 
     if hostport:
-        hostport_stats = 'cherami_client_python.{}.{}.{}'.format(client_name, hostport.replace('.','_').replace(':','_'), stats_name)
+        hostport_stats = 'cherami_client_python.{}.{}.{}'\
+                            .format(client_name, hostport.replace('.', '_').replace(':', '_'), stats_name)
         stats.count(hostport_stats, count)
 
 
@@ -156,7 +157,8 @@ def time_diff_in_ms(t1, t2):
 
 def calc_crc(data, crc_type):
     if crc_type == cherami.ChecksumOption.CRC32IEEE:
-        # Before python 3.0, the zlib.crc32() returns crc with range [-2**31, 2**31-1], which is incompatible with python 3.0 and GoLang implementation
+        # Before python 3.0, the zlib.crc32() returns crc with range [-2**31, 2**31-1],
+        # which is incompatible with python 3.0 and GoLang implementation
         # So we need to mask the return value with 0xffffffff. More on https://docs.python.org/2/library/zlib.html
         return zlib.crc32(data) & 0xffffffff
     if crc_type == cherami.ChecksumOption.MD5:

@@ -123,24 +123,54 @@ class Client(object):
 
     def create_destination(self, create_destination_request):
         return util.execute_frontend(
-            self.tchannel, self.deployment_str, self.headers, self.timeout_seconds, 'createDestination', create_destination_request)
+            self.tchannel,
+            self.deployment_str,
+            self.headers,
+            self.timeout_seconds,
+            'createDestination',
+            create_destination_request)
 
     def read_destination(self, read_destination_request):
         return util.execute_frontend(
-            self.tchannel, self.deployment_str, self.headers, self.timeout_seconds, 'readDestination', read_destination_request)
+            self.tchannel,
+            self.deployment_str,
+            self.headers,
+            self.timeout_seconds,
+            'readDestination',
+            read_destination_request)
 
     def create_consumer_group(self, create_consumer_group_request):
         return util.execute_frontend(
-            self.tchannel, self.deployment_str, self.headers, self.timeout_seconds, 'createConsumerGroup', create_consumer_group_request)
+            self.tchannel,
+            self.deployment_str,
+            self.headers,
+            self.timeout_seconds,
+            'createConsumerGroup',
+            create_consumer_group_request)
 
     def read_consumer_group(self, read_consumer_group_request):
         return util.execute_frontend(
-            self.tchannel, self.deployment_str, self.headers, self.timeout_seconds, 'readConsumerGroup', read_consumer_group_request)
+            self.tchannel,
+            self.deployment_str,
+            self.headers,
+            self.timeout_seconds,
+            'readConsumerGroup',
+            read_consumer_group_request)
 
     def purge_DLQ_for_consumer_group(self, purge_DLQ_for_consumer_group_request):
         return util.execute_frontend(
-            self.tchannel, self.deployment_str, self.headers, self.timeout_seconds, 'purgeDLQForConsumerGroup', purge_DLQ_for_consumer_group_request)
+            self.tchannel,
+            self.deployment_str,
+            self.headers,
+            self.timeout_seconds,
+            'purgeDLQForConsumerGroup',
+            purge_DLQ_for_consumer_group_request)
 
     def merge_DLQ_for_consumer_group(self, merge_DLQ_for_consumer_group_request):
         return util.execute_frontend(
-            self.tchannel, self.deployment_str, self.headers, self.timeout_seconds, 'mergeDLQForConsumerGroup', merge_DLQ_for_consumer_group_request)
+            self.tchannel,
+            self.deployment_str,
+            self.headers,
+            self.timeout_seconds,
+            'mergeDLQForConsumerGroup',
+            merge_DLQ_for_consumer_group_request)

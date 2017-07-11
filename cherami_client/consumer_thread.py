@@ -29,7 +29,16 @@ from cherami_client.lib import cherami
 
 
 class ConsumerThread(Thread):
-    def __init__(self, tchannel, headers, logger, msg_queue, hostport, path, consumer_group_name, timeout_seconds, msg_batch_size):
+    def __init__(self,
+                 tchannel,
+                 headers,
+                 logger,
+                 msg_queue,
+                 hostport,
+                 path,
+                 consumer_group_name,
+                 timeout_seconds,
+                 msg_batch_size):
         Thread.__init__(self)
         self.tchannel = tchannel
         self.headers = headers
@@ -52,7 +61,8 @@ class ConsumerThread(Thread):
                                                      receiveTimeout=max(1, self.timeout_seconds - 1)
                                                      )
         while not self.stop_signal.is_set():
-            # possible optimization: if we don't have enough capacity in the queue, backoff for a bit before pulling from Cherami again
+            # possible optimization: if we don't have enough capacity in the queue,
+            # backoff for a bit before pulling from Cherami again
             try:
                 result = util.execute_output_host(tchannel=self.tchannel,
                                                   headers=self.headers,
@@ -60,14 +70,22 @@ class ConsumerThread(Thread):
                                                   timeout=self.timeout_seconds,
                                                   method_name='receiveMessageBatch',
                                                   request=request)
-                util.stats_count(self.tchannel.name, 'receiveMessageBatch.messages', self.hostport, len(result.messages))
+                util.stats_count(self.tchannel.name,
+                                 'receiveMessageBatch.messages',
+                                 self.hostport,
+                                 len(result.messages))
 
                 for msg in result.messages:
                     # if the queue is full, keep trying until there's free slot, or the thread has been shutdown
                     while not self.stop_signal.is_set():
                         try:
-                            self.msg_queue.put((util.create_delivery_token(msg.ackId, self.hostport), msg), block=True, timeout=5)
-                            util.stats_count(self.tchannel.name, 'consumer_msg_queue.enqueue', self.hostport, 1)
+                            self.msg_queue.put((util.create_delivery_token(msg.ackId, self.hostport), msg),
+                                               block=True,
+                                               timeout=5)
+                            util.stats_count(self.tchannel.name,
+                                             'consumer_msg_queue.enqueue',
+                                             self.hostport,
+                                             1)
                             break
                         except Full:
                             pass

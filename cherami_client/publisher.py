@@ -28,7 +28,14 @@ from cherami_client.reconfigure_thread import ReconfigureThread
 
 class Publisher(object):
 
-    def __init__(self, logger, path, tchannel, deployment_str, headers, timeout_seconds, reconfigure_interval_seconds):
+    def __init__(self,
+                 logger,
+                 path,
+                 tchannel,
+                 deployment_str,
+                 headers,
+                 timeout_seconds,
+                 reconfigure_interval_seconds):
         self.logger = logger
         self.path = path
         self.tchannel = tchannel
@@ -112,7 +119,8 @@ class Publisher(object):
 
     # publish a message. Returns an ack(type is cherami.PutMessageAck)
     # the Status field of the ack indicates whether the publish was successful or not
-    # id: an identifier client can use to identify messages (cherami doesn't care about this field but just pass through)
+    # id: an identifier client can use to identify messages \
+    #     (cherami doesn't care about this field but just pass through)
     # data: message payload
     # user context: user specified context to pass through
     def publish(self, id, data, userContext={}):

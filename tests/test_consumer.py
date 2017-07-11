@@ -150,7 +150,6 @@ class TestConsumer(unittest.TestCase):
         self.assertEquals(self.test_cg, args[0].call_args.request.consumerGroupName)
         self.assertEquals(0, len(msgs))
 
-
     def test_consumer_ack_ok(self):
         self.mock_call.result.return_value = self.output_hosts
 
@@ -168,7 +167,6 @@ class TestConsumer(unittest.TestCase):
         self.assertEquals(1, len(args[0].call_args.ackRequest.ackIds))
         self.assertEquals(self.test_delivery_token[0], args[0].call_args.ackRequest.ackIds[0])
         self.assertTrue(res)
-
 
     def test_consumer_ack_fail(self):
         self.mock_call.result.return_value = self.output_hosts

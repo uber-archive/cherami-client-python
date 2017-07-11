@@ -49,7 +49,8 @@ class ReconfigureThread(threading.Thread):
             try:
                 self.reconfigure_func()
             except Exception:
-                self.logger.info('reconfiguration thread {0}, exception {1}'.format(threading.current_thread(), traceback.format_exc()))
+                self.logger.info('reconfiguration thread {0}, exception {1}'
+                                 .format(threading.current_thread(), traceback.format_exc()))
                 pass
 
             # done reconfigure, reset signal if needed

@@ -46,7 +46,8 @@ class AckThread(Thread):
             try:
                 hostport = None
                 try:
-                    is_ack, delivery_token, callback = self.ack_queue.get(block=True, timeout=self.timeout_seconds)
+                    is_ack, delivery_token, callback \
+                        = self.ack_queue.get(block=True, timeout=self.timeout_seconds)
                     hostport = util.get_hostport_from_delivery_token(delivery_token)
                     util.stats_count(self.tchannel.name, 'consumer_ack_queue.dequeue', hostport, 1)
                 except Empty:
