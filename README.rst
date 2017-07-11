@@ -9,17 +9,10 @@ Installation
 
 ``pip install cherami-client``
 
-
-Running Tests
--------------
-
-``make test``
-
-
 Usage
 -----
 
-First, create and edit the ``.yaml`` file under ``./config``
+Create and edit the ``.yaml`` file under ``./config``
 
 See Example:
 ::
