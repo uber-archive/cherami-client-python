@@ -24,6 +24,20 @@ Set the clay environment variable:
 
 Run the example client:
 ::
-        python ./example/example_publisher,py
-        python ./example/example_consumer.py
+        python ./demo/example_publisher,py
+        python ./demo/example_consumer.py
 
+Contributing
+------------
+We'd love your help in making Cherami great. If you find a bug or need a new feature, open an issue and we will respond as fast as we can.
+If you want to implement new feature(s) and/or fix bug(s) yourself, open a pull request with the appropriate unit tests and we will merge it after review.
+
+Note: All contributors also need to fill out the `Uber Contributor License Agreement <http://t.uber.com/cla>`_ before we can merge in any of your changes.
+
+Documentation
+-------------
+Interested in learning more about Cherami? Read the blog post: `eng.uber.com/cherami <https://eng.uber.com/cherami/>`_
+
+License
+-------
+MIT License, please see `LICENSE <https://github.com/uber/cherami-client-python/blob/master/LICENSE>`_ for details.

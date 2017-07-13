@@ -1,0 +1,15 @@
+language: python
+
+install:
+  - pip install coveralls
+  - make bootstrap
+
+env:
+  - CLAY_CONFIG=./config/test.yaml
+
+script:
+  - make test
+
+after_success:
+  - coverage run --source cherami_client setup.py test
+  - coveralls
