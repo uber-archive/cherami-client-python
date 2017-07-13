@@ -33,7 +33,7 @@ Set the clay environment variable:
 
 Run the example client:
 ::
-        python ./demo/example_publisher,py
+        python ./demo/example_publisher.py
         python ./demo/example_consumer.py
 
 Contributing
