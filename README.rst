@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/uber/cherami-client-python.svg?branch=master
+    :target: https://travis-ci.org/uber/cherami-client-python
+
 ===============================
 Cherami Client For Python
 ===============================
