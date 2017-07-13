@@ -9,6 +9,6 @@ py==1.4.31                # via pytest
 pyflakes==1.0.0           # via flake8
 pytest==2.8.7
 pytest-cov
-pytest-ipdb==0.1-prerelease
+pytest-ipdb==0.1-prerelease2
 pytest-tornado
 six==1.10.0               # via mock
