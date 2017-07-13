@@ -1,6 +1,9 @@
 .. image:: https://travis-ci.org/uber/cherami-client-python.svg?branch=master
     :target: https://travis-ci.org/uber/cherami-client-python
 
+.. image:: https://coveralls.io/repos/github/uber/cherami-client-python/badge.svg?branch=master
+:target: https://coveralls.io/github/uber/cherami-client-python?branch=master
+
 ===============================
 Cherami Client For Python
 ===============================
