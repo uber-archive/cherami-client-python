@@ -4,20 +4,8 @@ from setuptools import setup, find_packages
 from pip.req import parse_requirements
 
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 name = 'cherami-client'
-
-
-install_requires = []
-test_requires = []
-
-
-for r in parse_requirements('requirements.txt', session=False):
-    install_requires.append(str(r.req))
-
-
-for r in parse_requirements('requirements-test.txt', session=False):
-    test_requires.append(str(r.req))
 
 
 def read_long_description(filename="README.rst"):
@@ -42,7 +30,13 @@ setup(
     license='MIT',
     keywords='cherami python client',
     long_description=read_long_description(),
-    install_requires=install_requires,
+    install_requires=[
+        'tchannel>=1.0.1',
+        'zest.releaser==6.5',
+        'crcmod',
+        'clay-flask',
+        'PyYAML',
+    ],
     zip_safe=False,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -53,6 +47,21 @@ setup(
     ],
     test_suite='tests',
     extras_require={
-        'tests': test_requires,
+        'tests': [
+            'coverage==4.0.3',
+            'pytest==2.8.7',
+            'pytest-cov',
+            'pytest-ipdb==0.1-prerelease',
+            'pytest-tornado',
+            'py==1.4.31',           # via pytest
+            'flake8==2.5.4',
+            'pyflakes==1.0.0',      # via flake8
+            'pep8==1.7.0',          # via flake8
+            'mccabe==0.4.0',        # via flake8
+            'mock==2.0.0',
+            'six==1.10.0',          # via mock
+            'pbr==1.9.1',           # via mock
+            'funcsigs==1.0.2',      # via mock
+        ],
     }
 )

@@ -1,14 +1,5 @@
-coverage==4.0.3
-flake8==2.5.4
-funcsigs==1.0.2           # via mock
-mccabe==0.4.0             # via flake8
-pep8==1.7.0               # via flake8
-mock==2.0.0
-pbr==1.9.1                # via mock
-py==1.4.31                # via pytest
-pyflakes==1.0.0           # via flake8
-pytest==2.8.7
-pytest-cov
-pytest-ipdb==0.1-prerelease2
-pytest-tornado
-six==1.10.0               # via mock
+# add dependencies in setup.py
+
+-r requirements.txt
+
+-e .[tests]
