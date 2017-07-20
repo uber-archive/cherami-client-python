@@ -51,7 +51,7 @@ setup(
             'coverage==4.0.3',
             'pytest==2.8.7',
             'pytest-cov',
-            'pytest-ipdb==0.1-prerelease',
+            'pytest-ipdb==0.1-prerelease2',
             'pytest-tornado',
             'py==1.4.31',           # via pytest
             'flake8==2.5.4',
