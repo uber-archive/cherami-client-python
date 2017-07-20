@@ -15,7 +15,6 @@ cherami_consumer_group:
     prefetch_size: 50
     destination: /test/dest1
     consumer_group: /test/cg1
-    imports: example.example_handler
     nack_failed_message: false
 
   consumer2:
@@ -25,6 +24,5 @@ cherami_consumer_group:
     prefetch_size: 50
     destination: /test/dest1
     consumer_group: /test/cg2
-    imports: example.example_handler
     nack_failed_message: false
 
