@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 from pip.req import parse_requirements
 
 
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 name = 'cherami-client'
 
 
