@@ -32,7 +32,7 @@ setup(
     long_description=read_long_description(),
     install_requires=[
         'tchannel>=1.0.1',
-        'zest.releaser==6.5',
+        'zest.releaser>=6.0,<7.0',
         'crcmod',
         'clay-flask',
         'PyYAML',
