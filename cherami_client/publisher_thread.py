@@ -21,7 +21,7 @@
 import threading
 import traceback
 from datetime import datetime
-from Queue import Empty
+from six.moves.queue import Empty
 
 from cherami_client.lib import cherami, cherami_input, util
 

@@ -18,9 +18,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import Queue
 import threading
 
+from six.moves import queue
 from cherami_client.lib import cherami, cherami_input, util
 from cherami_client.publisher_thread import PublisherThread
 from cherami_client.reconfigure_thread import ReconfigureThread
@@ -42,7 +42,7 @@ class Publisher(object):
         self.deployment_str = deployment_str
         self.headers = headers
         self.timeout_seconds = timeout_seconds
-        self.task_queue = Queue.Queue()
+        self.task_queue = queue.Queue()
         self.workers = {}
         self.reconfigure_signal = threading.Event()
         self.reconfigure_interval_seconds = reconfigure_interval_seconds
