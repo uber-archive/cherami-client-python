@@ -22,7 +22,7 @@ from __future__ import absolute_import
 
 import traceback
 from threading import Thread, Event
-from Queue import Full
+from six.moves.queue import Full
 
 from cherami_client.lib import util
 from cherami_client.lib import cherami

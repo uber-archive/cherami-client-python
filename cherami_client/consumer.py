@@ -21,7 +21,7 @@
 import time
 
 from threading import Event
-from Queue import Queue, Empty, Full
+from six.moves import queue
 
 from clay import stats
 from cherami_client.lib import cherami, util
@@ -52,11 +52,11 @@ class Consumer(object):
         self.tchannel = tchannel
         self.headers = headers
         self.pre_fetch_count = pre_fetch_count
-        self.msg_queue = Queue(pre_fetch_count)
+        self.msg_queue = queue.Queue(pre_fetch_count)
         self.msg_batch_size = max(pre_fetch_count / 10, 1)
         self.timeout_seconds = timeout_seconds
         self.consumer_threads = {}
-        self.ack_queue = Queue(ack_message_buffer_size)
+        self.ack_queue = queue.Queue(ack_message_buffer_size)
         self.ack_threads_count = ack_message_thread_count
         self.ack_threads = []
 
@@ -175,7 +175,7 @@ class Consumer(object):
                 self.msg_queue.task_done()
 
                 util.stats_count(self.tchannel.name, 'consumer_msg_queue.dequeue', None, 1)
-            except Empty:
+            except queue.Empty:
                 pass
         stats.timing(duration_stats, util.time_diff_in_ms(start_time, time.time()))
         return msgs
@@ -252,7 +252,7 @@ class Consumer(object):
 
             hostport = util.get_hostport_from_delivery_token(delivery_token)
             util.stats_count(self.tchannel.name, 'consumer_ack_queue.enqueue', hostport, 1)
-        except Full:
+        except queue.Full:
             callback(AckMessageResult(call_success=False,
                                       is_ack=True,
                                       delivery_token=delivery_token,

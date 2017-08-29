@@ -22,7 +22,7 @@ from __future__ import absolute_import
 
 import traceback
 from threading import Thread, Event
-from Queue import Empty
+from six.moves.queue import Empty
 
 from cherami_client.lib import util, cherami
 from cherami_client.ack_message_result import AckMessageResult
