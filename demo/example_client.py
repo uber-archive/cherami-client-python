@@ -22,7 +22,7 @@
 A client instance that can be used to create publisher or consumer instances.
 """
 
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 
 import time
 import logging
@@ -37,7 +37,7 @@ logger = logging.getLogger('example_client')
 while True:
     try:
         client = Client(tchannel, logger)
-        print 'Success: Created cherami client.'
+        print('Success: Created cherami client.')
 
         break
     except Exception as e:

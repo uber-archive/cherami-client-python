@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 
 import time
 
@@ -31,17 +31,17 @@ while True:
     try:
         publisher = client.create_publisher(destination)
         publisher.open()
-        print 'Publisher created.'
+        print('Publisher created.')
         break
     except Exception as e:
-        print 'Failed to connect to cherami: %s', e
+        print('Failed to connect to cherami: %s' % e)
         time.sleep(2)
 
 try:
     for i in range(2):
         publisher.publish(str(i), 'hello', {})
 except Exception as e:
-    print 'Failed to publish to cherami: ', e
+    print('Failed to publish to cherami: %s' % e)
     publisher.close()
 
 publisher.close()
