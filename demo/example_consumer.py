@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 
 import time
 
@@ -32,10 +32,10 @@ while True:
     try:
         consumer = client.create_consumer(destination, consumer_group)
         consumer.open()
-        print 'Consumer created.'
+        print('Consumer created.')
         break
     except Exception as e:
-        print 'Failed to create a consumer: %s', e
+        print('Failed to create a consumer: %s', e)
         time.sleep(2)
 
 try:
@@ -44,14 +44,14 @@ try:
         delivery_token = res[0]
         msg = res[1]
         try:
-            print msg.payload.data
+            print(msg.payload.data)
             consumer.ack(delivery_token)
         except Exception as e:
             consumer.nack(delivery_token)
-            print 'Failed to process a message: %s', e
+            print('Failed to process a message: %s', e)
             pass
 except Exception as e:
     consumer.close()
-    print 'Failed to receive messages: ', e
+    print('Failed to receive messages: ', e)
 
 consumer.close()
