@@ -11,6 +11,8 @@
 Cherami Client For Python
 ===============================
 
+(This project is deprecated and not maintained.)
+
 Python client library for publishing/consuming messages to/from `Cherami <https://github.com/uber/cherami-server>`_.
 
 Installation
